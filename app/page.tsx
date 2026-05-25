@@ -415,12 +415,13 @@ if (
 );
 
     alert("เพิ่มรายการสำเร็จ 🔥");
+    setTimeout(() => {
 
-    fetchData();
-    fetchGoals();
-    fetchIncome();
-    fetchBudget();
+  window.location.reload();
 
+}, 1000);
+
+    
     setOpen(false);
 
     setAmount("");
@@ -780,14 +781,14 @@ setBudgetAmount("");
 
       {/* CARDS */}
 
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+      <div className="bg-white p-2 md:p-5 rounded-3xl shadow-xl">
 
         <div className="bg-white p-6 rounded-3xl shadow-xl">
           <p className="text-gray-500 mb-2">
             💵 รายรับเดือนนี้
           </p>
 
-          <h2 className="text-4xl font-bold text-green-600">
+          <h2 className="text-lg md:text-3xl font-bold text-green-600">
             ฿{totalIncome}
           </h2>
         </div>
@@ -797,7 +798,7 @@ setBudgetAmount("");
             💸 รายจ่ายเดือนนี้
           </p>
 
-          <h2 className="text-4xl font-bold text-red-500">
+          <h2 className="text-lg md:text-3xl font-bold text-red-500">
             ฿{totalExpense}
           </h2>
         </div>
@@ -1148,26 +1149,26 @@ setBudgetAmount("");
 
             <tr>
 
-              <th className="text-left p-4">
+              <th className="text-left p-2 text-xs md:text-base">
                 วันที่
               </th>
 
-              <th className="text-left p-4">
+              <th className="text-left p-2 text-xs md:text-base">
                 เดือน
               </th>
 
-              <th className="text-left p-4">
+              <th className="text-left p-2 text-xs md:text-base">
                 หมวด
               </th>
 
-              <th className="text-left p-4">
+              <th className="text-left p-2 text-xs md:text-base">
                 ประเภท
               </th>
 
-              <th className="text-left p-4">
+              <th className="text-left p-2 text-xs md:text-base">
                 จำนวน
               </th>
-<th className="text-left p-4">
+<th className="text-left p-2 text-xs md:text-base">
   จัดการ
 </th>
             </tr>
@@ -1273,7 +1274,7 @@ setBudgetAmount("");
       }, 1000);
 
     }}
-    className="bg-red-500 text-white px-4 py-2 rounded-xl"
+    className="bg-red-500 text-white px-2 py-1 text-sm rounded-xl"
   >
     ลบ
   </button>
