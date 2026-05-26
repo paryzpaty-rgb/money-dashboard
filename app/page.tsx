@@ -786,63 +786,62 @@ setBudgetAmount("");
 
 </div>
       
+{/* CARDS */}
 
-      {/* CARDS */}
+<div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-8">
 
-      <div className="bg-white p-2 md:p-5 rounded-3xl shadow-xl">
+  <div className="bg-white p-6 rounded-3xl shadow-xl">
+    <p className="text-gray-500 mb-2">
+      💵 รายรับเดือนนี้
+    </p>
 
-        <div className="bg-white p-6 rounded-3xl shadow-xl">
-          <p className="text-gray-500 mb-2">
-            💵 รายรับเดือนนี้
-          </p>
+    <h2 className="text-lg md:text-3xl font-bold text-green-600">
+      ฿{totalIncome}
+    </h2>
+  </div>
 
-          <h2 className="text-lg md:text-3xl font-bold text-green-600">
-            ฿{totalIncome}
-          </h2>
-        </div>
+  <div className="bg-white p-6 rounded-3xl shadow-xl">
+    <p className="text-gray-500 mb-2">
+      💸 รายจ่ายเดือนนี้
+    </p>
 
-        <div className="bg-white p-6 rounded-3xl shadow-xl">
-          <p className="text-gray-500 mb-2">
-            💸 รายจ่ายเดือนนี้
-          </p>
+    <h2 className="text-lg md:text-3xl font-bold text-red-500">
+      ฿{totalExpense}
+    </h2>
+  </div>
 
-          <h2 className="text-lg md:text-3xl font-bold text-red-500">
-            ฿{totalExpense}
-          </h2>
-        </div>
+  <div className="bg-white p-6 rounded-3xl shadow-xl">
+    <p className="text-gray-500 mb-2">
+      🎯 เงินเก็บเดือนนี้
+    </p>
 
-        <div className="bg-white p-6 rounded-3xl shadow-xl">
-          <p className="text-gray-500 mb-2">
-            🎯 เงินเก็บเดือนนี้
-          </p>
+    <h2 className="text-lg md:text-3xl font-bold text-blue-500">
+      ฿{totalSavingsThisMonth}
+    </h2>
+  </div>
 
-          <h2 className="text-4xl font-bold text-blue-500">
-            ฿{totalSavingsThisMonth}
-          </h2>
-        </div>
+  <div className="bg-white p-6 rounded-3xl shadow-xl">
+    <p className="text-gray-500 mb-2">
+      🟢 เงินคงเหลือจริง
+    </p>
 
-        <div className="bg-white p-6 rounded-3xl shadow-xl">
-          <p className="text-gray-500 mb-2">
-            🟢 เงินคงเหลือจริง
-          </p>
+    <h2 className="text-lg md:text-3xl font-bold text-emerald-600">
+      ฿{realBalance}
+    </h2>
+  </div>
 
-          <h2 className="text-4xl font-bold text-emerald-600">
-            ฿{realBalance}
-          </h2>
-        </div>
+  <div className="bg-white p-6 rounded-3xl shadow-xl">
+    <p className="text-gray-500 mb-2">
+      🔥 วันนี้ใช้ไป
+    </p>
 
-      </div>
-      <div className="bg-white p-3 md:p-6 rounded-3xl shadow-xl">
-
-  <p className="text-gray-500 mb-2">
-    🔥 วันนี้ใช้ไป
-  </p>
-
-  <h2 className="text-2xl md:text-4xl font-bold text-red-500">
-    ฿{todayExpenseTotal}
-  </h2>
+    <h2 className="text-lg md:text-3xl font-bold text-red-500">
+      ฿{todayExpenseTotal}
+    </h2>
+  </div>
 
 </div>
+
 
       {/* EXPENSE CHART */}
 
