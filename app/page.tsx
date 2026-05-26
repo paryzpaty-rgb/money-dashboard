@@ -257,24 +257,22 @@ const [editAmount, setEditAmount] =
   );
 
   const totalExpense = expenseData.reduce(
+  (sum, row) =>
+    sum + Number(row[4] || 0),
+  0
+);
+
+
+
+const totalSavingsThisMonth =
+  filteredSavings.reduce(
     (sum, row) =>
-      sum + Number(row[4] || 0),
+      sum + Number(row[3] || 0),
     0
   );
 
-  const totalSavingsThisMonth =
-    filteredSavings.reduce(
-      (sum, row) =>
-        sum + Number(row[3] || 0),
-      0
-    );
-
-  const totalSavings =
-    goalsData.reduce(
-      (sum, row) =>
-        sum + Number(row[3] || 0),
-      0
-    );
+const remainingBalance =
+  totalIncome - totalExpense - totalSavingsThisMonth;
 
   const realBalance =
     totalIncome -
@@ -824,6 +822,17 @@ setBudgetAmount("");
         </div>
 
       </div>
+      <div className="bg-white p-3 md:p-6 rounded-3xl shadow-xl">
+
+  <p className="text-gray-500 mb-2">
+    💰 ยอดคงเหลือ
+  </p>
+
+  <h2 className="text-2xl md:text-4xl font-bold text-purple-600">
+    ฿{remainingBalance}
+  </h2>
+
+</div>
 
       {/* EXPENSE CHART */}
 
