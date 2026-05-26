@@ -273,7 +273,17 @@ const totalSavingsThisMonth =
 
 const remainingBalance =
   totalIncome - totalExpense - totalSavingsThisMonth;
+const today = new Date().toLocaleDateString("th-TH");
 
+const todayExpense = expenseData.filter(
+  (row) => row[0] === today
+);
+
+const todayExpenseTotal = todayExpense.reduce(
+  (sum, row) =>
+    sum + Number(row[4] || 0),
+  0
+);
   const realBalance =
     totalIncome -
     totalExpense -
@@ -825,11 +835,11 @@ setBudgetAmount("");
       <div className="bg-white p-3 md:p-6 rounded-3xl shadow-xl">
 
   <p className="text-gray-500 mb-2">
-    💰 ยอดคงเหลือ
+    🔥 วันนี้ใช้ไป
   </p>
 
-  <h2 className="text-2xl md:text-4xl font-bold text-purple-600">
-    ฿{remainingBalance}
+  <h2 className="text-2xl md:text-4xl font-bold text-red-500">
+    ฿{todayExpenseTotal}
   </h2>
 
 </div>
