@@ -16,7 +16,8 @@ export default function Home() {
   const [goalsData, setGoalsData] = useState<any[]>([]);
   const [incomeData, setIncomeData] = useState<any[]>([]);
   const [budgetData, setBudgetData] = useState<any[]>([]);
-
+  const [balanceData, setBalanceData] =
+  useState<any[]>([]);
   const [open, setOpen] = useState(false);
   
 
@@ -149,23 +150,28 @@ const [editAmount, setEditAmount] =
 
   async function fetchBudget() {
 
-    try {
+}
 
-      const res = await fetch(
-        "https://sheets.googleapis.com/v4/spreadsheets/1ZiN5R43khUEK9XqMYeYzEvMYuYGNM15PovdyHE0KDsc/values/Allocation!A1:E100?key=AIzaSyArAT0z9Yn-K4g0TcixeoHuRVmY0_q5KVc"
-      );
+async function fetchBalance() {
 
-      const json = await res.json();
+  try {
 
-      if (json.values) {
-        setBudgetData(json.values.slice(1));
-      }
+    const res = await fetch(
+      "https://sheets.googleapis.com/v4/spreadsheets/1ZiN5R43khUEK9XqMYeYzEvMYuYGNM15PovdyHE0KDsc/values/Balance!A1:B100?key=AIzaSyArAT0z9Yn-K4g0TcixeoHuRVmY0_q5KVc"
+    );
 
-    } catch (error) {
-      console.log(error);
+    const json = await res.json();
+
+    if (json.values) {
+      setBalanceData(json.values.slice(1));
     }
 
+  } catch (error) {
+
+    console.log(error);
+
   }
+}
 
   useEffect(() => {
 
@@ -173,7 +179,7 @@ const [editAmount, setEditAmount] =
     fetchGoals();
     fetchIncome();
     fetchBudget();
-
+    fetchBalance();
   }, []);
 
   useEffect(() => {
@@ -284,11 +290,16 @@ const todayExpenseTotal = todayExpense.reduce(
     sum + Number(row[4] || 0),
   0
 );
-  const realBalance =
-    totalIncome -
-    totalExpense -
-    totalSavingsThisMonth;
+ const carryBalance =
+  balanceData.find(
+    (row) => row[0] === month
+  )?.[1] || 0;
 
+const realBalance =
+  Number(carryBalance) +
+  totalIncome -
+  totalExpense -
+  totalSavingsThisMonth;
   const grouped: any = {};
 
   expenseData.forEach((row) => {
